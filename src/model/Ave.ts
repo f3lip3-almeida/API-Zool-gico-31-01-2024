@@ -1,5 +1,6 @@
-class Ave extends Animal{
-    
+import { Animal } from "./Animal";
+
+export class Ave extends Animal {
     private envergadura: number;
 
     constructor(_raca:string,
