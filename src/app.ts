@@ -19,12 +19,8 @@ server.get('/', (req, res) => {
 
 server.post('/ave', (req, res) => {
     const { nome, especie, idade, genero, envergadura } = req.body;
-    const novaAve = new Ave('Arara Azul', 'Arara', 5, 'Fêmea', 90);
-    
-    res.json({
-        mensagem: 'Esta é a nova ave do Zoológico:',
-        novaAve: novaAve
-    });
+    let ave: Ave = new Ave(nome, especie, idade, genero, envergadura);
+    res.json(["A nova ave do zoológico é: ", ave]);
 });
 
 server.listen(port, () => {
