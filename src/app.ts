@@ -17,6 +17,16 @@ server.get('/', (req, res) => {
     res.json([ave, reptil, mamifero]);
 })
 
+server.post('/ave', (req, res) => {
+    const { nome, especie, idade, genero, envergadura } = req.body;
+    const novaAve = new Ave('Arara Azul', 'Arara', 5, 'Fêmea', 90);
+    
+    res.json({
+        mensagem: 'Esta é a nova ave do Zoológico:',
+        novaAve: novaAve
+    });
+});
+
 server.listen(port, () => {
     console.log(`Servidor está escutando no endereço http://localhost:${port}`);
 })
