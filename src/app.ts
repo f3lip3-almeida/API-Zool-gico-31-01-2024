@@ -27,7 +27,7 @@ server.post('/ave', (req, res) => {
     res.json(["A nova ave do zoológico é: ", ave]);
 });
 
-server.post(' /Habitat', (req, res) => {
+server.post(' /habitat', (req, res) => {
     const { nome, animais } = req.body;
     const habitat = new Habitat(nome, animais);
     console.log(habitat);
