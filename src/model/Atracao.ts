@@ -1,4 +1,4 @@
-import { Habitat } from "./Habitat"; // Importa a classe Habitat
+import { Habitat } from "./Habitat";
 
 export class Atracao {
     private nome: string; // Nome da atração

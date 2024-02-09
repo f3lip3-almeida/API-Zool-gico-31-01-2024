@@ -1,9 +1,14 @@
 import { Animal } from "./Animal";
 
 export class Habitat {
-    private nome: string;
-    private listaAnimais: Array<Animal>;
+    private nome: string; // Nome do habitat
+    private listaAnimais: Array<Animal>; // Lista de animais presentes no habitat
 
+    /**
+     * Construtor da classe Habitat.
+     * @param _nome O nome do habitat.
+     * @param _listaAnimais A lista de animais presentes no habitat.
+     */
     constructor(_nome: string, _listaAnimais: Array<Animal>) {
         this.nome = _nome;
         this.listaAnimais = _listaAnimais;

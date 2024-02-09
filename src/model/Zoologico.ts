@@ -1,4 +1,4 @@
-import { Atracao } from "./Atracao"; // Importa a classe Atracao
+import { Atracao } from "./Atracao";
 
 export class Zoologico {
     private nome: string; // Nome do zoológico
