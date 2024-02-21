@@ -1,33 +1,67 @@
 import { Animal } from "./Animal";
+import { DatabaseModel } from "./DatabaseModel";
 
+const database = new DatabaseModel().pool;
+
+/**
+ * Representa um réptil no zoológico, que é uma subclasse de Animal.
+ */
 export class Reptil extends Animal {
-    private tipo_de_escamas: string; // Tipo de escamas do réptil
+    /**
+     * O tipo de escamas do réptil.
+     */
+    private tipo_escamas: string;
 
     /**
-     * Construtor da classe Reptil.
-     * @param _tipo_de_escamas O tipo de escamas do réptil.
+     * Cria uma nova instância de Reptil.
+     * 
      * @param _nome O nome do réptil.
      * @param _idade A idade do réptil.
      * @param _genero O gênero do réptil.
+     * @param _tipo_escamas O tipo de escamas do réptil.
      */
-    constructor(_tipo_de_escamas: string, _nome: string, _idade: number, _genero: string) {
+    constructor(_nome: string, 
+                _idade: number, 
+                _genero: string, 
+                _tipo_escamas: string) {
         super(_nome, _idade, _genero);
-        this.tipo_de_escamas = _tipo_de_escamas;
+        this.tipo_escamas = _tipo_escamas;
     }
 
     /**
-     * Retorna o tipo de escamas do réptil.
+     * Obtém o tipo de escamas do réptil.
+     * 
      * @returns O tipo de escamas do réptil.
      */
-    public getTipoDeEscamas(): string {
-        return this.tipo_de_escamas;
+    public getTipoEscamas(): string {
+        return this.tipo_escamas;
     }
 
     /**
      * Define o tipo de escamas do réptil.
-     * @param tipo_de_escamas O novo tipo de escamas para o réptil.
+     * 
+     * @param _tipo_escamas O tipo de escamas a ser atribuído ao réptil.
      */
-    public setTipoDeEscamas(tipo_de_escamas: string): void {
-        this.tipo_de_escamas = tipo_de_escamas;
+    public setTipoEscamas(_tipo_escamas: string): void {
+        this.tipo_escamas = _tipo_escamas;
     }
+    
+    static async listarRepteis() {
+    const listaDeRepteis: Array<Reptil> = [];
+    try {
+        const queryReturn = await database.query(`SELECT * FROM reptil WHERE tipo_escamas LIKE 'Escudos'`);
+        queryReturn.rows.forEach(reptil => {
+            listaDeRepteis.push(reptil);
+        });
+
+        // Apenas para testar se a lista veio correta do banco
+        console.log(listaDeRepteis);
+
+        return listaDeRepteis;
+    } catch (error) {
+        console.log('Erro no modelo');
+        console.log(error);
+        return "error";
+    }
+}
 }
