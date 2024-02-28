@@ -14,7 +14,7 @@ export class DatabaseModel {
             user: 'postgres',
             host: 'localhost',
             database: 'zoologico',
-            password: 'pedro742819aa123',
+            password: 'admin',
             port: 5432,
             max: 10,
             idleTimoutMillis: 10000
