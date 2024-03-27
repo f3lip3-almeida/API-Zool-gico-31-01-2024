@@ -10,15 +10,17 @@ export class DatabaseModel {
     private _client: pg.Client;
 
     constructor() {
+        // confiração padrão para o conexão com o banco de dados
         this._config = {
-            user: 'postgres',
-            host: 'localhost',
-            database: 'zoologico',
-            password: 'admin',
-            port: 5432,
+            user: process.env.DB_USER,
+            host: process.env.DB_HOST, 
+            database: process.env.DB_NAME,
+            password: process.env.DB_PASSWORD,
+            port: process.env.DB_PORT,
             max: 10,
             idleTimoutMillis: 10000
         }
+
         this._pool = new pg.Pool(this._config);
         this._client = new pg.Client(this._config);
     }
